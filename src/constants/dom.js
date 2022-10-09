@@ -1,5 +1,6 @@
 import { $ } from '../utils/dom.js'
 
+export const $app = $('#app')
 export const $carNamesInput = $('#car-names-input')
 export const $carNamesSubmitButton = $('#car-names-submit')
 export const $racingCountInput = $('#racing-count-input')

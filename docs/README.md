@@ -49,3 +49,13 @@
 ---
 #### 4. 상세 기능 목록 (구현 과정에서 자세하게 업데이트)
 
+#### - RacingGame Class 
+- `이벤트 리스너 (위임으로 관리)`  
+  - `car-names-submit 클릭 시`
+    - `1. 자동차 이름 길이 검사 [o]`
+      - `실패 시 alert`
+    
+    - `2. 자동차 생성(Car class), 이름 할당 후 저장`
+    - `3. 자동차 이름 input, button disable` 
+        
+     
