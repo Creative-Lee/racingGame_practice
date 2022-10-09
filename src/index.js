@@ -1,9 +1,12 @@
 import { $app, $carNamesInput } from './constants/dom.js'
 import { MIN_CAR_NAME_LENGTH, MAX_CAR_NAME_LENGTH } from './constants/condition.js'
 import { CAR_NAME_ERROR } from './constants/message.js'
+import Car from './car.js'
+
 class RacingGame {
 	constructor() {
 		this.initEventListeners()
+		this.cars
 	}
 
 	initEventListeners() {
@@ -15,6 +18,7 @@ class RacingGame {
 					alert(CAR_NAME_ERROR)
 					return
 				}
+				this.cars = carNames.map(carName => new Car(carName))
 			}
 		})
 	}

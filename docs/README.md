@@ -55,7 +55,7 @@
     - `1. 자동차 이름 길이 검사 [o]`
       - `실패 시 alert`
     
-    - `2. 자동차 생성(Car class), 이름 할당 후 저장`
+    - `2. 자동차 생성(Car class), 이름 할당 후 저장 [o]`
     - `3. 자동차 이름 input, button disable` 
         
      
