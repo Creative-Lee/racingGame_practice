@@ -1,4 +1,11 @@
-import { $app, $carNamesInput, $carNamesSubmitButton, $racingCountInput, $racingCountSubmitButton } from './constants/dom.js'
+import {
+	$app,
+	$carNamesInput,
+	$carNamesSubmitButton,
+	$racingCountInput,
+	$racingCountSubmitButton,
+	$racingResult,
+} from './constants/dom.js'
 import { MIN_CAR_NAME_LENGTH, MAX_CAR_NAME_LENGTH, MIN_RACING_COUNT } from './constants/condition.js'
 import { CAR_NAME_ERROR, CAR_RACE_COUNT_ERROR } from './constants/message.js'
 import { disableDOM } from './utils/dom.js'
@@ -42,13 +49,29 @@ class RacingGame {
 		disableDOM($racingCountInput)
 		disableDOM($racingCountSubmitButton)
 		this.cars.forEach(car => car.processOneCycle())
-		console.log(this.cars)
+		this.printResult()
 	}
 	isValidCarNames(carNames) {
 		return carNames.every(carName => MIN_CAR_NAME_LENGTH <= carName.length && carName.length <= MAX_CAR_NAME_LENGTH)
 	}
 	isValidRacingCount(racingCount) {
 		return MIN_RACING_COUNT <= parseInt(racingCount, 10)
+	}
+	getResultTemplate(cars) {
+		return `
+		<p>
+			${cars
+				.map(car => {
+					return `
+				<div>${car.name}: ${'-'.repeat(car.position)}</div>
+				`
+				})
+				.join('')}
+		</p>
+		`
+	}
+	printResult() {
+		$racingResult.insertAdjacentHTML('afterend', this.getResultTemplate(this.cars))
 	}
 }
 
