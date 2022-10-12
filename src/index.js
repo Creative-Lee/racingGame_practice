@@ -41,6 +41,8 @@ class RacingGame {
 		}
 		disableDOM($racingCountInput)
 		disableDOM($racingCountSubmitButton)
+		this.cars.forEach(car => car.processOneCycle())
+		console.log(this.cars)
 	}
 	isValidCarNames(carNames) {
 		return carNames.every(carName => MIN_CAR_NAME_LENGTH <= carName.length && carName.length <= MAX_CAR_NAME_LENGTH)
