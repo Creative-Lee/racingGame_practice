@@ -59,7 +59,7 @@
     - `3. 자동차 이름 input, button disable [o]`
   <br>
   - `racing-count-submit 클릭 시`
-    - `1. 레이싱 카운트 유효성 검사`
+    - `1. 레이싱 카운트 유효성 검사 [o]`
       - `실패 시 alert`
     <br>
     - `2. 게임 진행`

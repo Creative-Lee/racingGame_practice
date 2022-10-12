@@ -1,6 +1,10 @@
-import { $app, $carNamesInput, $carNamesSubmitButton } from './constants/dom.js'
-import { MIN_CAR_NAME_LENGTH, MAX_CAR_NAME_LENGTH } from './constants/condition.js'
-import { CAR_NAME_ERROR } from './constants/message.js'
+import { $app, $carNamesInput, $carNamesSubmitButton, $racingCountInput } from './constants/dom.js'
+import {
+	MIN_CAR_NAME_LENGTH,
+	MAX_CAR_NAME_LENGTH,
+	MIN_RACING_COUNT,
+} from './constants/condition.js'
+import { CAR_NAME_ERROR, CAR_RACE_COUNT_ERROR } from './constants/message.js'
 import { disableDOM } from './utils/dom.js'
 import Car from './car.js'
 
@@ -16,6 +20,9 @@ class RacingGame {
 			if (e.target.id === 'car-names-submit') {
 				this.handleSubmitCarNames()
 			}
+			if (e.target.id === 'racing-count-submit') {
+				this.handleSubmitRacingCount()
+			}
 		})
 	}
 
@@ -30,10 +37,20 @@ class RacingGame {
 		disableDOM($carNamesInput)
 		disableDOM($carNamesSubmitButton)
 	}
+	handleSubmitRacingCount() {
+		const racingCount = $racingCountInput.value.trim()
+		if (!this.isValidRacingCount(racingCount)) {
+			alert(CAR_RACE_COUNT_ERROR)
+			return
+		}
+	}
 	isValidCarNames(carNames) {
 		return carNames.every(
 			carName => MIN_CAR_NAME_LENGTH <= carName.length && carName.length <= MAX_CAR_NAME_LENGTH
 		)
+	}
+	isValidRacingCount(racingCount) {
+		return MIN_RACING_COUNT <= racingCount
 	}
 }
 
