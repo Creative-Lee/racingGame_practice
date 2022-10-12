@@ -46,7 +46,7 @@ class RacingGame {
 		return carNames.every(carName => MIN_CAR_NAME_LENGTH <= carName.length && carName.length <= MAX_CAR_NAME_LENGTH)
 	}
 	isValidRacingCount(racingCount) {
-		return MIN_RACING_COUNT <= racingCount
+		return MIN_RACING_COUNT <= parseInt(racingCount, 10)
 	}
 }
 
