@@ -48,8 +48,7 @@ class RacingGame {
 		}
 		disableDOM($racingCountInput)
 		disableDOM($racingCountSubmitButton)
-		this.cars.forEach(car => car.processOneCycle())
-		this.printResult()
+		this.play(racingCount)
 	}
 	isValidCarNames(carNames) {
 		return carNames.every(carName => MIN_CAR_NAME_LENGTH <= carName.length && carName.length <= MAX_CAR_NAME_LENGTH)
@@ -62,9 +61,7 @@ class RacingGame {
 		<p>
 			${cars
 				.map(car => {
-					return `
-				<div>${car.name}: ${'-'.repeat(car.position)}</div>
-				`
+					return `<div>${car.name}: ${'-'.repeat(car.position)}</div>`
 				})
 				.join('')}
 		</p>
@@ -72,6 +69,12 @@ class RacingGame {
 	}
 	printResult() {
 		$racingResult.insertAdjacentHTML('afterend', this.getResultTemplate(this.cars))
+	}
+	play(racingCount) {
+		for (let i = 0; i < parseInt(racingCount, 10); i++) {
+			this.cars.forEach(car => car.processOneCycle())
+			this.printResult()
+		}
 	}
 }
 
