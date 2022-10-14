@@ -57,18 +57,15 @@ class RacingGame {
 		return MIN_RACING_COUNT <= parseInt(racingCount, 10)
 	}
 	getResultTemplate(cars) {
-		return `
-		<p>
-			${cars
-				.map(car => {
-					return `<div>${car.name}: ${'-'.repeat(car.position)}</div>`
-				})
-				.join('')}
-		</p>
+		return `	
+		<br>	
+		<div>
+			${cars.map(car => `<div>${car.name}: ${'-'.repeat(car.position)}</div>`).join('')}
+		</div>		
 		`
 	}
 	printResult() {
-		$racingResult.insertAdjacentHTML('afterend', this.getResultTemplate(this.cars))
+		$racingResult.insertAdjacentHTML('beforeend', this.getResultTemplate(this.cars))
 	}
 	play(racingCount) {
 		for (let i = 0; i < parseInt(racingCount, 10); i++) {
