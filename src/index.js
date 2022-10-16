@@ -28,7 +28,7 @@ class RacingGame {
     $racingCountInput.value = ''
     $racingResult.innerText = '📄 실행 결과'
     $racingWinners.innerText = ''
-
+    this.removeRestartButton()
     ableDOM($carNamesInput)
     ableDOM($carNamesSubmitButton)
     disableDOM($racingCountInput)
@@ -44,9 +44,22 @@ class RacingGame {
       if (e.target.id === 'racing-count-submit') {
         this.handleSubmitRacingCount()
       }
+      if (e.target.id === 'restart-button') {
+        this.initGame()
+      }
     })
   }
-
+  createRestartButton() {
+    let button = document.createElement('button')
+    button.id = 'restart-button'
+    button.innerText = '재시작'
+    $app.appendChild(button)
+  }
+  removeRestartButton() {
+    if ($app.lastChild.id === 'restart-button') {
+      $app.removeChild($app.lastChild)
+    }
+  }
   handleSubmitCarNames() {
     const carNames = $carNamesInput.value.trim().split(',')
     const { isValid, type } = this.isValidCarNames(carNames)
@@ -71,6 +84,7 @@ class RacingGame {
     disableDOM($racingCountInput)
     disableDOM($racingCountSubmitButton)
     this.play(racingCount)
+    this.createRestartButton()
   }
   isValidCarNames(carNames) {
     if (!this.isValidCarCount(carNames)) {

@@ -74,6 +74,8 @@
           <br>
 
     - `2. 자동차 생성(Car class), 이름 할당 후 저장 [o]`
+      <br>
+
     - `3. 자동차 이름 input, button disable [o]`
       <br>
 
@@ -113,14 +115,20 @@
         - `최종 우승자 프린트 메서드`
           <br>
 
-  - `게임 초기화 메서드 [o]`
-
-    - `자동차 이름 input 초기화 및 input, button able`
-    - `레이싱 카운트 input 초기화 및 input, button disable`
-    - `this.cars 초기화`
-    - `게임 결과 초기화`
-    - `최종 우승자 초기화`
+    - `4. 재시작 버튼 생성 [o]`
       <br>
 
-  - `게임 종료 후 재시작 버튼 생성`
-    - `버튼 클릭시 게임 초기화`
+  - `restart-button 클릭 시`
+
+    - `게임 초기화 메서드 호출 [o]`
+      <br>
+
+- `게임 초기화 메서드 [o]`
+
+  - `자동차 이름 input 초기화 및 input, button able`
+  - `레이싱 카운트 input 초기화 및 input, button disable`
+  - `this.cars 초기화`
+  - `게임 결과 초기화`
+  - `최종 우승자 초기화`
+  - `재시작 버튼 remove`
+    <br>
