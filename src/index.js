@@ -14,15 +14,27 @@ import {
   MIN_CAR_COUNT,
 } from './constants/condition.js'
 import { ERR_MSG } from './constants/message.js'
-import { disableDOM } from './utils/dom.js'
+import { disableDOM, ableDOM } from './utils/dom.js'
 import Car from './car.js'
 
 class RacingGame {
   constructor() {
+    this.initGame()
     this.initEventListeners()
-    this.cars
   }
 
+  initGame() {
+    $carNamesInput.value = ''
+    $racingCountInput.value = ''
+    $racingResult.innerText = '📄 실행 결과'
+    $racingWinners.innerText = ''
+
+    ableDOM($carNamesInput)
+    ableDOM($carNamesSubmitButton)
+    disableDOM($racingCountInput)
+    disableDOM($racingCountSubmitButton)
+    this.cars = []
+  }
   initEventListeners() {
     $app.addEventListener('click', e => {
       e.preventDefault()
@@ -42,8 +54,11 @@ class RacingGame {
       this.showErrorAlert(type)
       return
     }
+
     disableDOM($carNamesInput)
     disableDOM($carNamesSubmitButton)
+    ableDOM($racingCountInput)
+    ableDOM($racingCountSubmitButton)
 
     this.cars = carNames.map(carName => new Car(carName))
   }
